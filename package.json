@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --verbose --coverage",
-    "start": "node index.js"
+    "init": "sequelize db:create",
+    "start": "NODE_ENV=production node index.js",
+    "dev": "nodemon index.js",
+    "test": "NODE_ENV=test jest --coverage --verbose",
+    "test-watch": "NODE_ENV=test jest --verbose --watchAll"
   },
   "repository": {
     "type": "git",
@@ -23,6 +26,9 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "jest": "^27.0.6",
+    "pg": "^8.7.1",
+    "sequelize": "^6.6.5",
+    "sqlite3": "^5.0.2",
     "supertest": "^6.1.6"
   }
 }

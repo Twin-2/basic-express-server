@@ -8,15 +8,17 @@ const logger = require('./middleware/logger.js');
 const validator = require('./middleware/validator.js');
 const handleNotFound = require('./error-handlers/404.js');
 const errorHandler = require('./error-handlers/500.js');
+const bookRoutes = require('./routes/books.js')
+const gameRoutes = require('./routes/games.js')
+
 
 app.use(cors());
+app.use(express.json());
 
-app.get('/person', validator, (req, res) => {
-    let name = req.query.name
-    let data = { name: name }
-    res.status(200).json(data)
-})
-app.use('*', logger, handleNotFound)
+app.use(bookRoutes);
+app.use(gameRoutes);
+
+app.use('*', handleNotFound)
 app.use(errorHandler)
 
 module.exports = {
