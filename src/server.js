@@ -15,6 +15,8 @@ const gameRoutes = require('./routes/games.js')
 app.use(cors());
 app.use(express.json());
 
+app.use(logger)
+
 app.use(bookRoutes);
 app.use(gameRoutes);
 
